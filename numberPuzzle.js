@@ -17,27 +17,41 @@
     }
 
     var doMoveIfValid = function (e) {
+
         var currentRow = e.parent().children();
         var position = currentRow.index(e);
 
         // move up
-        var previousRow = e.parent().prev().children();
-        var aboveCell = previousRow.eq(position);
-        if (previousRow != null && isEmptyCell(aboveCell)) {
-            moveNumber(e, aboveCell);
+        var previousRow = e.parent().prev();
+        if (previousRow !== null && isEmptyCell(previousRow.children().eq(position))) {
+            moveNumber(e, previousRow.children().eq(position));
             return;
         }
 
         // move left
         var leftCell = currentRow.eq(position - 1);
-        if (leftCell !== null && isEmptyCell(leftCell)) {
+        if (isEmptyCell(leftCell)) {
             moveNumber(e, leftCell);
+            return;
+        }
+
+        // move down
+        var nextRow = e.parent().next();
+        if (nextRow !== null && isEmptyCell(nextRow.children().eq(position))) {
+            moveNumber(e, nextRow.children().eq(position));
+            return;
+        }
+
+        // move right
+        var rightCell = currentRow.eq(position + 1);
+        if (isEmptyCell(rightCell)) {
+            moveNumber(e, rightCell);
             return;
         }
     }
 
     var isEmptyCell = function(e) {
-        return e.html() === "";
+        return e !== null && e.html() === "";
     };
 
     var moveNumber = function(source, destination) {
