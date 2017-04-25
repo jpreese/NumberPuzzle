@@ -1,21 +1,17 @@
 ﻿(function ()
 {
-  window.$ = function (selector)
+  window.jrQuery = function (selector)
   {
-
-    if (selector.indexOf("#") > 0)
-    {
+    if (selector.indexOf("#") >= 0) {
       return new HtmlElement(document.getElementById(selector.substring(1)));
     }
-    else
-    {
+    else {
       return new HtmlElementCollection(document.getElementsByClassName(selector.substring(1)));
     }
   }
 
   var HtmlElement = function (element)
   {
-
     this.html = function ()
     {
       return element.innerHTML;
@@ -32,7 +28,6 @@
 
   var HtmlElementCollection = function (elementArray)
   {
-
     this.click = function (f)
     {
       for (var x = 0; x < elementArray.length; x++)
@@ -43,6 +38,5 @@
         }
       }
     }
-
   }
 })();
