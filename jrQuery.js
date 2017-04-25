@@ -32,6 +32,10 @@
             return element.previousElementSibling == null ? null : new HtmlElement(element.previousElementSibling);
         };
 
+        this.next = function() {
+            return element.nextElementSibling == null ? null : new HtmlElement(element.nextElementSibling);
+        };
+
         this.children = function() {
             return new HtmlElementCollection(element.children);
         };
@@ -55,8 +59,8 @@
             return elementArray.length;
         };
 
-        this.eq = function(index) {
-            return new HtmlElement(elementArray[index]);
+        this.eq = function (index) {
+            return elementArray[index] === undefined ? null : new HtmlElement(elementArray[index]);
         }
 
         this.index = function(e) {
