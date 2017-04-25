@@ -18,6 +18,10 @@
                 f();
             };
         };
+
+        this.text = function(str) {
+            element.innerHTML = str;
+        };
     };
 
     var HtmlElementCollection = function(elementArray) {
@@ -33,6 +37,10 @@
         this.length = function() {
             return elementArray.length;
         };
+
+        this.eq = function(index) {
+            return new HtmlElement(elementArray[index]);
+        }
     };
 
 })();
