@@ -16,16 +16,23 @@
         }
     }
 
-    var isValidMove = function (e) {
-        var previousRow = e.parent().prev();
-        var position = e.parent().children().index(e);
-        var aboveCell;
+    var doMoveIfValid = function (e) {
+        var currentRow = e.parent().children();
+        var position = currentRow.index(e);
 
-        if (previousRow != null) {
-            aboveCell = previousRow.children().eq(position);
-            if (isEmptyCell(aboveCell)) {
-                moveNumber(e, aboveCell);
-            }
+        // move up
+        var previousRow = e.parent().prev().children();
+        var aboveCell = previousRow.eq(position);
+        if (previousRow != null && isEmptyCell(aboveCell)) {
+            moveNumber(e, aboveCell);
+            return;
+        }
+
+        // move left
+        var leftCell = currentRow.eq(position - 1);
+        if (leftCell !== null && isEmptyCell(leftCell)) {
+            moveNumber(e, leftCell);
+            return;
         }
     }
 
@@ -42,7 +49,7 @@
     window.onload = function() {
 
         $(".numberCell").click(function (e) {
-            isValidMove(e);
+            doMoveIfValid(e);
         });
 
         initializeRandomGrid();
