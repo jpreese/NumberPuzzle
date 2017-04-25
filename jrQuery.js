@@ -8,7 +8,8 @@
         }
     };
 
-    var HtmlElement = function(element) {
+    var HtmlElement = function (element) {
+
         this.html = function() {
             return element.innerHTML;
         };
@@ -21,6 +22,22 @@
 
         this.text = function(str) {
             element.innerHTML = str;
+        };
+
+        this.parent = function() {
+            return new HtmlElement(element.parentNode);
+        };
+
+        this.prev = function () {
+            return element.previousElementSibling == null ? null : new HtmlElement(element.previousElementSibling);
+        };
+
+        this.children = function() {
+            return new HtmlElementCollection(element.children);
+        };
+
+        this.id = function() {
+            return element.id;
         };
     };
 
@@ -41,6 +58,13 @@
         this.eq = function(index) {
             return new HtmlElement(elementArray[index]);
         }
-    };
 
+        this.index = function(e) {
+            for (var x = 0; x < elementArray.length; x++) {
+                if (e.html() == elementArray[x].innerHTML) {
+                    return x;
+                }
+            }
+        };
+    };
 })();
