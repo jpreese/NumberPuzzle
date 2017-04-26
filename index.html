@@ -36,37 +36,50 @@
     </div>
 
     <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <table class="table table-bordered text-center">
-                <tr>
-                    <td id="0" class="numberCell"></td>
-                    <td id="1" class="numberCell"></td>
-                    <td id="2" class="numberCell"></td>
-                    <td id="3" class="numberCell"></td>
-                </tr>
-                <tr>
-                    <td id="4" class="numberCell"></td>
-                    <td id="5" class="numberCell"></td>
-                    <td id="6" class="numberCell"></td>
-                    <td id="7" class="numberCell"></td>
-                </tr>
-                <tr>
-                    <td id="8" class="numberCell"></td>
-                    <td id="9" class="numberCell"></td>
-                    <td id="10" class="numberCell"></td>
-                    <td id="11" class="numberCell"></td>
-                </tr>
-                <tr>
-                    <td id="12" class="numberCell"></td>
-                    <td id="13" class="numberCell"></td>
-                    <td id="14" class="numberCell"></td>
-                    <td id="15" class="numberCell"></td>
-                </tr>
-            </table>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <table class="table table-bordered text-center table-responsive">
+                    <tr>
+                        <td id="0" class="numberCell"></td>
+                        <td id="1" class="numberCell"></td>
+                        <td id="2" class="numberCell"></td>
+                        <td id="3" class="numberCell"></td>
+                    </tr>
+                    <tr>
+                        <td id="4" class="numberCell"></td>
+                        <td id="5" class="numberCell"></td>
+                        <td id="6" class="numberCell"></td>
+                        <td id="7" class="numberCell"></td>
+                    </tr>
+                    <tr>
+                        <td id="8" class="numberCell"></td>
+                        <td id="9" class="numberCell"></td>
+                        <td id="10" class="numberCell"></td>
+                        <td id="11" class="numberCell"></td>
+                    </tr>
+                    <tr>
+                        <td id="12" class="numberCell"></td>
+                        <td id="13" class="numberCell"></td>
+                        <td id="14" class="numberCell"></td>
+                        <td id="15" class="numberCell"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <p class="text-muted">Moves: <span id="moves">0</span></p>
+                <p class="text-muted">Time: <span id="time">00:00:00</span></p>
+            </div>
         </div>
     </div>
 
-    <script src="jrQuery.js"></script>
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <a href="#" class="btn btn-primary">New Game</a>
+            <a href="#" class="btn btn-primary">Simple Game</a>
+        </div>
+    </div>
+
+<script src="jrQuery.js"></script>
     <script src="numberPuzzle.js"></script>
 </body>
 </html>
