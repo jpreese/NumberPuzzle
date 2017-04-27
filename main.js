@@ -1,19 +1,15 @@
-(function ($, Timer, Puzzle) {
+(function ($, Game) {
 
     window.onload = function () {
-
-        var timer = new Timer();
-        var puzzle = new Puzzle();
-        timer.start();
-
+        var game = new Game();
+        game.start();
+        
         $(".numberCell").click(function (e) {
             if (doMoveIfValid(e)) {
                 updateMoveCounter();
                 checkWinningCondition();
             }
         });
-
-        puzzle.initializeRandomGrid();
     };
-
-}(jrQuery, Timer, Puzzle));
+    
+}(jrQuery, Game));
