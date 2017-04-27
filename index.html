@@ -30,7 +30,7 @@
             <div class="jumbotron">
                 <h2><b>Instructions</b>
                 </h2>
-                <p>Click on a number to move it to the adjacent empty space. Get all of the numbers in ascending order to win the game.</p>
+                <p>Click on a number to move it to the adjacent empty space. Get all of the numbers in ascending order (from left to right, top to bottom) to win the game.</p>
             </div>
         </div>
     </div>
@@ -40,22 +40,22 @@
             <div class="col-md-6 col-md-offset-3">
                 <table class="table table-bordered text-center table-responsive">
                     <tr>
-                        <td id="0" class="numberCell"></td>
-                        <td id="1" class="numberCell"></td>
-                        <td id="2" class="numberCell"></td>
-                        <td id="3" class="numberCell"></td>
+                        <td id="0" class="col-md-1 numberCell"></td>
+                        <td id="1" class="col-md-1 numberCell"></td>
+                        <td id="2" class="col-md-1 numberCell"></td>
+                        <td id="3" class="col-md-1 numberCell"></td>
                     </tr>
                     <tr>
-                        <td id="4" class="numberCell"></td>
-                        <td id="5" class="numberCell"></td>
-                        <td id="6" class="numberCell"></td>
-                        <td id="7" class="numberCell"></td>
+                        <td id="4" class="col-md-1 numberCell"></td>
+                        <td id="5" class="col-md-1 numberCell"></td>
+                        <td id="6" class="col-md-1 numberCell"></td>
+                        <td id="7" class="col-md-1 numberCell"></td>
                     </tr>
                     <tr>
-                        <td id="8" class="numberCell"></td>
-                        <td id="9" class="numberCell"></td>
-                        <td id="10" class="numberCell"></td>
-                        <td id="11" class="numberCell"></td>
+                        <td id="8" class="col-md-1 numberCell"></td>
+                        <td id="9" class="col-md-1 numberCell"></td>
+                        <td id="10" class="col-md-1 numberCell"></td>
+                        <td id="11" class="col-md-1 numberCell"></td>
                     </tr>
                     <tr>
                         <td id="12" class="numberCell"></td>
@@ -67,19 +67,23 @@
             </div>
             <div class="col-md-3">
                 <p class="text-muted">Moves: <span id="moves">0</span></p>
-                <p class="text-muted">Time: <span id="time">00:00:00</span></p>
+                <p class="text-muted">Time (sec): <span id="time"></span></p>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <a href="#" class="btn btn-primary">New Game</a>
-            <a href="#" class="btn btn-primary">Simple Game</a>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-5">
+                <a href="javascript:startNewGame();" class="btn btn-primary">New Game</a>
+                <a href="#" class="btn btn-primary">Easy Game</a>
+            </div>
         </div>
     </div>
 
-<script src="jrQuery.js"></script>
+
+    <script src="jrQuery.js"></script>
+    <script src="timer.js"></script>
     <script src="numberPuzzle.js"></script>
 </body>
 </html>
