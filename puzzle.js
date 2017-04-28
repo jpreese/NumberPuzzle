@@ -89,7 +89,7 @@
     };
 
     var checkWinningCondition = function() {
-        var cells = $(".numberCell");
+        var cells = $(".col-md-1");
         for (var x = 0; x < cells.length() ; x++) {
             if (x+1 != cells.eq(x).html() && x+1 != cells.length()) {
                 return false;

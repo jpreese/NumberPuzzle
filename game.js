@@ -22,7 +22,7 @@
         var defaultGrid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15];
         //randomizeArray(defaultGrid);
 
-        var cells = $(".numberCell");
+        var cells = $(".col-md-1");
         for (var x = 0; x < cells.length(); x++) {
             cells.eq(x).text(defaultGrid[x]);
         }

@@ -4,7 +4,7 @@
         var game = new Game();
         game.start();
         
-        $(".numberCell").click(function (e) {
+        $(".col-md-1").click(function (e) {
             game.click(e);
         });
     };
