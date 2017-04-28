@@ -1,7 +1,8 @@
- (function($, Timer) {
+ (function($, Timer, Puzzle) {
  
     window.Game = function() {
         this.clock = new Timer();
+        this.puzzle = new Puzzle();
     };
     
     window.Game.prototype = {
@@ -9,13 +10,17 @@
         start: function() {
             initializeRandomGrid();
             this.clock.start();
+        },
+
+        click: function(e) {
+            this.puzzle.tryMove(e);
         }
     };
     
     var initializeRandomGrid = function () {
 
         var defaultGrid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15];
-        randomizeArray(defaultGrid);
+        //randomizeArray(defaultGrid);
 
         var cells = $(".numberCell");
         for (var x = 0; x < cells.length(); x++) {
@@ -28,4 +33,4 @@
         return o;
     };
     
-})(jrQuery, Timer);
+})(jrQuery, Timer, Puzzle);

@@ -5,10 +5,7 @@
         game.start();
         
         $(".numberCell").click(function (e) {
-            if (doMoveIfValid(e)) {
-                updateMoveCounter();
-                checkWinningCondition();
-            }
+            game.click(e);
         });
     };
     
