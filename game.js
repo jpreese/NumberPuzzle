@@ -14,6 +14,10 @@
 
         click: function(e) {
             this.puzzle.tryMove(e);
+            if(this.puzzle.isAscending()) {
+                this.clock.stop();
+                alert("won");
+            }
         }
     };
     

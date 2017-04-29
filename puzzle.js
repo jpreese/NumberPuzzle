@@ -8,11 +8,19 @@
 
             if(doMoveIfValid(e)) {
                 updateMoveCounter();
-                checkWinningCondition();
             }
 
-        }
+        },
 
+        isAscending: function() {
+            var cells = $(".col-md-1");
+            for (var x = 0; x < cells.length() ; x++) {
+                if (x+1 != cells.eq(x).html() && x+1 != cells.length()) {
+                    return false;
+                }
+            }
+            return true;
+        }
     };
 
     var moves = 0;
@@ -82,20 +90,6 @@
         var sourceValue = source.html();
         source.text("");
         destination.text(sourceValue);
-
-        if (checkWinningCondition()) {
-            alert("won");
-        }
-    };
-
-    var checkWinningCondition = function() {
-        var cells = $(".col-md-1");
-        for (var x = 0; x < cells.length() ; x++) {
-            if (x+1 != cells.eq(x).html() && x+1 != cells.length()) {
-                return false;
-            }
-        }
-        return true;
     };
 
     var updateMoveCounter = function() {
