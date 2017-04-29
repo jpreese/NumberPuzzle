@@ -6,10 +6,19 @@
     };
     
     window.Game.prototype = {
+
+        init: function () {
+            initializeEasyGrid();
+        },
     
-        start: function() {
+        startNormalGame: function() {
             initializeRandomGrid();
-            this.clock.reset();
+            this.reset();
+        },
+
+        startEasyGame: function() {
+            initializeEasyGrid();
+            this.reset();
         },
 
         click: function(e) {
@@ -22,20 +31,31 @@
 
         reset: function() {
             this.puzzle.resetMoveCount();
-            this.start();
+            this.clock.reset();
         }
     };
-    
-    var initializeRandomGrid = function () {
 
-        var defaultGrid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15];
-        //randomizeArray(defaultGrid);
-
+    var fillGrid = function(numbers) {
         var cells = $(".col-md-1");
         for (var x = 0; x < cells.length(); x++) {
-            cells.eq(x).text(defaultGrid[x]);
+            cells.eq(x).text(numbers[x]);
         }
+    }
+    
+    var initializeRandomGrid = function () {
+        var defaultGrid = getNumberArray();
+        randomizeArray(defaultGrid);
+        fillGrid(defaultGrid);
     };
+
+    var initializeEasyGrid = function() {
+        var defaultGrid = getNumberArray();
+        fillGrid(defaultGrid);
+    }
+
+    var getNumberArray = function() {
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15];
+    }
     
     var randomizeArray = function(o) {
         for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
