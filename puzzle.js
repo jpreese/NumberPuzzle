@@ -1,13 +1,27 @@
  (function($) {
 
-    window.Puzzle = function () {};
+    window.Puzzle = function () {
+
+        this.moves = 0;
+
+        this.incrementMoveCount = function() {
+            this.moves++;
+            $("#moves").text(this.moves);
+
+        };
+
+        this.resetMoveCount = function() {
+            this.moves = 0;
+            $("#moves").text(this.moves);
+        }
+    };
     
     window.Puzzle.prototype = {
 
         tryMove: function(e) {
 
             if(doMoveIfValid(e)) {
-                updateMoveCounter();
+                this.incrementMoveCount();
             }
 
         },
@@ -22,8 +36,6 @@
             return true;
         }
     };
-
-    var moves = 0;
 
     var tryMoveUp = function(e, position) {
         var previousRow = e.parent().prev();
@@ -90,11 +102,6 @@
         var sourceValue = source.html();
         source.text("");
         destination.text(sourceValue);
-    };
-
-    var updateMoveCounter = function() {
-        moves++;
-        $("#moves").text(moves);
     };
     
 })(jrQuery);

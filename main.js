@@ -7,6 +7,10 @@
         $(".col-md-1").click(function (e) {
             game.click(e);
         });
+
+        $("#newgame").click(function (e) {
+            game.reset();
+        });
     };
     
 }(jrQuery, Game));

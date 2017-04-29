@@ -37,6 +37,7 @@
             this.stop();
             this.ms = 0;
             this.sec = 0;
+            this.start();
         }
     };
 })();

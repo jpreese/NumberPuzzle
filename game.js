@@ -9,7 +9,7 @@
     
         start: function() {
             initializeRandomGrid();
-            this.clock.start();
+            this.clock.reset();
         },
 
         click: function(e) {
@@ -18,6 +18,11 @@
                 this.clock.stop();
                 alert("won");
             }
+        },
+
+        reset: function() {
+            this.puzzle.resetMoveCount();
+            this.start();
         }
     };
     
