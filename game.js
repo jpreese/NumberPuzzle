@@ -8,7 +8,8 @@
     window.Game.prototype = {
 
         init: function () {
-            initializeEasyGrid();
+            var zeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            fillGrid(zeros);
         },
     
         startNormalGame: function() {
@@ -22,6 +23,10 @@
         },
 
         click: function(e) {
+            if(this.clock.timer === 0) {
+                return;
+            }
+
             this.puzzle.tryMove(e);
             if(this.puzzle.isAscending()) {
                 this.clock.stop();
