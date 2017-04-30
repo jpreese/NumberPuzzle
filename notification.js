@@ -1,6 +1,6 @@
 (function() {
 
-	var _ = window.Notification = function() { };
+    var _ = window.Notification;
 
 	_.winNotification = function() {
 		var success = document.getElementById("success");
@@ -41,5 +41,4 @@
 			}
 		})();
 	};
-
 })();
