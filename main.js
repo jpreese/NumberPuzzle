@@ -13,7 +13,7 @@
         });
 
         $("#easygame").click(function (e) {
-        	game.startEasyGame();
+            game.startEasyGame();
         });
     };
     
