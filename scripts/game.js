@@ -7,7 +7,7 @@
     
     window.Game.prototype = {
 
-        init: function () {
+        init: function() {
             var zeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             fillGrid(zeros);
         },

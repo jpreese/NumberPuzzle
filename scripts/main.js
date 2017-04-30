@@ -4,15 +4,15 @@
         var game = new Game();
         game.init();
         
-        $(".col-md-1").click(function (e) {
+        $(".col-md-1").click(function(e) {
             game.click(e);
         });
 
-        $("#newgame").click(function (e) {
+        $("#newgame").click(function(e) {
             game.startNormalGame();
         });
 
-        $("#easygame").click(function (e) {
+        $("#easygame").click(function(e) {
             game.startEasyGame();
         });
     };
