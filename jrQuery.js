@@ -1,74 +1,80 @@
-﻿(function () {
+﻿(function() {
 
     window.jrQuery = function(selector) {
+    
+        var collection;
         if (selector.indexOf("#") >= 0) {
-            return new HtmlElement(document.getElementById(selector.substring(1)));
+            collection = document.getElementById(selector.substring(1));
         } else {
-            return new HtmlElementCollection(document.getElementsByClassName(selector.substring(1)));
+            collection = document.getElementsByClassName(selector.substring(1));
         }
+        
+        return new jrQuery.HtmlElement(collection);
     };
 
-    var HtmlElement = function (element) {
-
-        this.html = function() {
-            return element.innerHTML;
-        };
-
-        this.click = function(f) {
-            element.onclick = function() {
-                f();
-            };
-        };
-
-        this.text = function(str) {
-            element.innerHTML = str;
-        };
-
-        this.parent = function() {
-            return new HtmlElement(element.parentNode);
-        };
-
-        this.prev = function () {
-            return element.previousElementSibling == null ? null : new HtmlElement(element.previousElementSibling);
-        };
-
-        this.next = function() {
-            return element.nextElementSibling == null ? null : new HtmlElement(element.nextElementSibling);
-        };
-
-        this.children = function() {
-            return new HtmlElementCollection(element.children);
-        };
-
-        this.id = function() {
-            return element.id;
-        };
-    };
-
-    var HtmlElementCollection = function(elementArray) {
-
-        this.click = function(f) {
-            for (var x = 0; x < elementArray.length; x++) {
-                elementArray[x].onclick = function() {
-                    f(new HtmlElement(this));
+    jrQuery.HtmlElement = function(element) {
+        this.element = element;
+    }
+    
+    jrQuery.HtmlElement.prototype = {
+    
+        eq: function(index) {
+            return new jrQuery.HtmlElement(this.element[index]);
+        },
+    
+        html: function() {
+            return this.element.innerHTML;
+        },
+        
+        click: function(f) {
+            if(this.element.length === undefined) {
+                this.element.onclick = function() {
+                    f();
                 };
             }
-        };
-
-        this.length = function() {
-            return elementArray.length;
-        };
-
-        this.eq = function (index) {
-            return elementArray[index] === undefined ? null : new HtmlElement(elementArray[index]);
-        }
-
-        this.index = function(e) {
-            for (var x = 0; x < elementArray.length; x++) {
-                if (e.html() == elementArray[x].innerHTML) {
+            else {
+                for(var x = 0; x < this.element.length; x++) {
+                    this.element[x].onclick = function() {
+                        f(new jrQuery.HtmlElement(this));
+                    };
+                }
+            }
+        },
+        
+        text: function(output) {
+            this.element.innerHTML = output;
+        },
+        
+        parent: function() {
+            return new jrQuery.HtmlElement(this.element.parentNode);
+        },
+        
+        prev: function() {
+            return this.element.previousElementSibling === null ? null : new jrQuery.HtmlElement(this.element.previousElementSibling);
+        },
+        
+        next: function() {
+            return this.element.nextElementSibling === null ? null : new jrQuery.HtmlElement(this.element.nextElementSibling); 
+        },
+        
+        children: function() {
+            return new jrQuery.HtmlElement(this.element.children);
+        },
+        
+        id: function() {
+            return this.element.id;
+        },
+        
+        index: function(e) {
+            for (var x = 0; x < this.element.length; x++) {
+                if (e.html() == this.element[x].innerHTML) {
                     return x;
                 }
             }
-        };
+        },
+        
+        length: function() {
+            return this.element.length;
+        }
     };
 })();
