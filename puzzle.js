@@ -1,6 +1,6 @@
  (function($) {
 
-    window.Puzzle = function () {
+    window.Puzzle = function() {
 
         this.moves = 0;
 
@@ -46,7 +46,7 @@
         }
     };
 
-    var tryMoveLeft = function (e, position) {
+    var tryMoveLeft = function(e, position) {
         var currentRow = e.parent().children();
         var leftCell = currentRow.eq(position - 1);
         if (isEmptyCell(leftCell)) {
@@ -55,7 +55,7 @@
         }
     };
 
-    var tryMoveDown = function (e, position) {
+    var tryMoveDown = function(e, position) {
         var nextRow = e.parent().next();
         if (nextRow !== null && isEmptyCell(nextRow.children().eq(position))) {
             moveNumber(e, nextRow.children().eq(position));
@@ -63,7 +63,7 @@
         }
     };
 
-    var tryMoveRight = function (e, position) {
+    var tryMoveRight = function(e, position) {
         var currentRow = e.parent().children();
         var rightCell = currentRow.eq(position + 1);
         if (isEmptyCell(rightCell)) {
@@ -72,7 +72,7 @@
         }
     };
 
-    var doMoveIfValid = function (e) {
+    var doMoveIfValid = function(e) {
         var currentPosition = e.parent().children().index(e);
 
         if (tryMoveUp(e, currentPosition)) {
@@ -94,9 +94,8 @@
         return false;
     };
 
-
     var isEmptyCell = function(e) {
-        return e !== null && e.html() === "";
+        return e.element && e.html() === "";
     };
 
     var moveNumber = function(source, destination) {
@@ -104,5 +103,4 @@
         source.text("");
         destination.text(sourceValue);
     };
-    
 })(jrQuery);
