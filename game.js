@@ -1,4 +1,4 @@
- (function($, Timer, Puzzle) {
+ (function($, Timer, Puzzle, Notification) {
  
     window.Game = function() {
         this.clock = new Timer();
@@ -27,15 +27,19 @@
                 return;
             }
 
-            this.puzzle.tryMove(e);
+            if(this.puzzle.tryMove(e) == false) {
+                Notification.invalidNotification();
+            }
+
             if(this.puzzle.isAscending()) {
                 this.clock.stop();
-                alert("won");
+                Notification.winNotification();
             }
         },
 
         reset: function() {
             this.puzzle.resetMoveCount();
+            Notification.hideNotifications();
             this.clock.reset();
         }
     };
@@ -67,4 +71,4 @@
         return o;
     };
     
-})(jrQuery, Timer, Puzzle);
+})(jrQuery, Timer, Puzzle, Notification);
