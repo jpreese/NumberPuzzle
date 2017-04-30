@@ -22,8 +22,9 @@
 
             if(doMoveIfValid(e)) {
                 this.incrementMoveCount();
+                return true;
             }
-
+            return false;
         },
 
         isAscending: function() {
