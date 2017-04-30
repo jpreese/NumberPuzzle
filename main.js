@@ -16,5 +16,4 @@
             game.startEasyGame();
         });
     };
-    
 }(jrQuery, Game));

@@ -31,14 +31,14 @@
 	};
 
 	var fadeOutElement = function(element) {
-		element.style.opacity = 1;
+        element.style.opacity = 1;
 
-		(function fade() {
-			if ((element.style.opacity -= .1) < 0) {
-				element.style.display = "none";
-			} else {
-				requestAnimationFrame(fade);
-			}
-		})();
-	};
+        (function fade() {
+            if ((element.style.opacity -= .1) < 0) {
+                element.style.display = "none";
+            } else {
+                requestAnimationFrame(fade);
+            }
+        })();
+    };
 })();
